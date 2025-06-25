@@ -9,6 +9,7 @@ public class User {
         this.email = email;
     }
 
+
     // Getter and Setter methods
     public String getUsername() {
         return username;
