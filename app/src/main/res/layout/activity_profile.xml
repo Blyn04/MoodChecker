@@ -120,8 +120,8 @@
 
                     <ImageView
                         android:id="@+id/badge"
-                        android:layout_width="220dp"
-                        android:layout_height="75dp"
+                        android:layout_width="210dp"
+                        android:layout_height="80dp"
                         android:layout_marginBottom="8dp"
                         android:background="#D1D8E0"
                         android:scaleType="fitXY"

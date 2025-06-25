@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -103,18 +104,40 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Handle Save Changes button
         findViewById(R.id.btnSaveChanges).setOnClickListener(view -> {
-            String newName = etName.getText().toString();
-            String newGmail = etGmail.getText().toString();
+            String newName = etName.getText().toString().trim();
+            String newGmail = etGmail.getText().toString().trim();
 
-            // Update the profile with the new values
-            etName.setText(newName);
+            if (TextUtils.isEmpty(newName) || TextUtils.isEmpty(newGmail)) {
+                Toast.makeText(ProfileActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-            // Show toast message
-            Toast.makeText(ProfileActivity.this, "Changes Saved", Toast.LENGTH_SHORT).show();
+            // Check if the username already exists in Firestore
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("users")
+                    .whereEqualTo("username", newName)
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            if (!task.getResult().isEmpty()) {
+                                // If the username already exists, show a message
+                                Toast.makeText(ProfileActivity.this, "Username is already taken, please choose another", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // Update the profile with the new values
+                                etName.setText(newName);
 
-            // Save changes to Firestore if needed (optional)
-            saveChanges(newName, newGmail);
+                                // Show toast message
+                                Toast.makeText(ProfileActivity.this, "Changes Saved", Toast.LENGTH_SHORT).show();
+
+                                // Save changes to Firestore
+                                saveChanges(newName, newGmail);
+                            }
+                        } else {
+                            Toast.makeText(ProfileActivity.this, "Error checking username", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
+
 
         btnEditSave.setOnClickListener(view -> {
             if (isEditing) {
@@ -607,6 +630,42 @@ public class ProfileActivity extends AppCompatActivity {
     private void saveChanges(String newName, String newGmail) {
         String userId = mAuth.getCurrentUser().getUid();
 
+        // Check for duplicate username
+        db.collection("users")
+                .whereEqualTo("username", newName)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if (!task.getResult().isEmpty()) {
+                            // Check if the duplicate username belongs to a different user
+                            boolean isDuplicate = false;
+                            for (DocumentSnapshot document : task.getResult()) {
+                                if (!document.getId().equals(userId)) {
+                                    isDuplicate = true;
+                                    break;
+                                }
+                            }
+
+                            if (isDuplicate) {
+                                // Duplicate username exists
+                                Toast.makeText(ProfileActivity.this, "Username is already taken, please choose another", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // Proceed with updating the profile
+                                updateProfile(userId, newName, newGmail);
+                            }
+                        } else {
+                            // No duplicate found, proceed with updating
+                            updateProfile(userId, newName, newGmail);
+                        }
+                    } else {
+                        // Handle query error
+                        Toast.makeText(ProfileActivity.this, "Error checking username", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    // Helper method to update the profile
+    private void updateProfile(String userId, String newName, String newGmail) {
         // Create a map of updated profile data
         Map<String, Object> userUpdates = new HashMap<>();
         userUpdates.put("username", newName);
@@ -618,6 +677,7 @@ public class ProfileActivity extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> Toast.makeText(ProfileActivity.this, "Profile updated", Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e -> Toast.makeText(ProfileActivity.this, "Error updating profile", Toast.LENGTH_SHORT).show());
     }
+
 
     private void toggleEditing(boolean enable) {
         isEditing = enable;

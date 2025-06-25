@@ -54,6 +54,7 @@
         android:layout_height="300dp"
         android:layout_marginTop="15dp"
         android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="@+id/textView11"
@@ -116,7 +117,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Question"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -128,7 +129,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:padding="5dp"
                 android:text="Answer Type"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.081"
@@ -146,11 +147,11 @@
                 app:boxStrokeColor="#80000000"
                 app:boxStrokeWidth="0.8dp"
                 app:counterTextColor="@color/black"
-                app:helperTextTextColor="@color/black"
-                app:hintTextColor="@color/black"
+                app:helperTextTextColor="#000000"
+                app:hintTextColor="#000000"
                 app:layout_constraintStart_toStartOf="@+id/textView33"
                 app:layout_constraintTop_toBottomOf="@+id/textView33"
-                app:placeholderTextColor="@color/black"
+                app:placeholderTextColor="#000000"
                 app:prefixTextColor="@color/black"
                 app:startIconDrawable="@drawable/edit"
                 app:suffixTextColor="@color/black">
@@ -162,6 +163,7 @@
                     android:fontFamily="@font/poppins"
                     android:hint="Enter question here..."
                     android:paddingStart="50dp"
+                    android:textColor="#000000"
                     android:textSize="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -210,9 +212,12 @@
                 app:boxCornerRadiusTopStart="15dp"
                 app:boxStrokeColor="#80000000"
                 app:boxStrokeWidth="0.8dp"
+                app:helperTextTextColor="#000000"
+                app:hintTextColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/answerTypeSpinner"
                 app:layout_constraintTop_toBottomOf="@+id/answerTypeSpinner"
+                app:placeholderTextColor="#000000"
                 app:startIconTint="#D8D8D8">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -221,6 +226,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
                     android:paddingStart="50dp"
+                    android:textColor="#000000"
                     android:textSize="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -247,6 +253,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
                     android:paddingStart="50dp"
+                    android:textColor="#000000"
                     android:textSize="10dp"
                     android:visibility="gone" />
             </com.google.android.material.textfield.TextInputLayout>

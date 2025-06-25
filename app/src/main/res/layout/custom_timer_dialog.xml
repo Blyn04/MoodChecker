@@ -19,6 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textAlignment="center"
             tools:context=".AddTaskPopUp">
 
             <ImageView
@@ -53,6 +54,9 @@
                     android:id="@+id/taskNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:fontFamily="@font/poppins"
                     android:hint="Task Name"
                     android:paddingStart="50dp"
@@ -60,10 +64,7 @@
                     android:textColorHighlight="#000000"
                     android:textColorHint="#000000"
                     android:textColorLink="#000000"
-                    android:textSize="14dp"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:clickable="false"/>
+                    android:textSize="14dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -87,6 +88,9 @@
                     android:id="@+id/deadlineTextView"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:fontFamily="@font/poppins"
                     android:hint="Select Date"
                     android:inputType="datetime"
@@ -95,10 +99,7 @@
                     android:textColorHighlight="#000000"
                     android:textColorHint="#000000"
                     android:textColorLink="#000000"
-                    android:textSize="14dp"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:clickable="false"/>
+                    android:textSize="14dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--            <com.google.android.material.textfield.TextInputLayout-->
@@ -150,8 +151,7 @@
                 android:id="@+id/saveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="68dp"
                 android:layout_marginBottom="28dp"
                 android:backgroundTint="#EDB856"
                 android:fontFamily="@font/poppins_bold"
@@ -159,24 +159,21 @@
                 android:textColor="#FFFFFF"
                 android:textSize="11dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.875"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <Button
                 android:id="@+id/startTimerButton"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="28dp"
-                android:backgroundTint="#EDB856"
+                android:backgroundTint="#E2ADBA"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Start"
                 android:textColor="#FFFFFF"
                 android:textSize="11dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/stopTimerButton"
-                app:layout_constraintHorizontal_bias="0.245"
+                app:layout_constraintEnd_toStartOf="@+id/saveButton"
+                app:layout_constraintHorizontal_bias="0.812"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
@@ -237,6 +234,7 @@
                 android:layout_width="77dp"
                 android:layout_height="65dp"
                 android:layout_marginTop="10dp"
+                android:textAlignment="center"
                 android:textColorHint="@color/black"
                 app:boxCornerRadiusBottomEnd="15dp"
                 app:boxCornerRadiusBottomStart="15dp"
@@ -258,15 +256,15 @@
                     android:id="@+id/hoursEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="#F5F5F5"
                     android:fontFamily="@font/poppins_bold"
                     android:hint="HH"
+                    android:inputType="number"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    app:boxStrokeColor="#000000"
-                    android:backgroundTint="#F5F5F5"
-                    android:inputType="number"
-                    android:textSize="12sp" />
+                    android:textSize="13sp"
+                    app:boxStrokeColor="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -302,8 +300,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/minutesinput"
                 android:layout_width="77dp"
-                android:layout_height="55dp"
+                android:layout_height="65dp"
                 android:layout_marginTop="10dp"
+                android:textAlignment="center"
                 android:textColorHint="@color/black"
                 app:boxCornerRadiusBottomEnd="15dp"
                 app:boxCornerRadiusBottomStart="15dp"
@@ -325,22 +324,23 @@
                     android:id="@+id/minutesEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="#F5F5F5"
                     android:fontFamily="@font/poppins_bold"
                     android:hint="MM"
+                    android:inputType="number"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    app:boxStrokeColor="#000000"
-                    android:backgroundTint="#F5F5F5"
-                    android:inputType="number"
-                    android:textSize="12sp" />
+                    android:textSize="13sp"
+                    app:boxStrokeColor="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/secondsinput"
                 android:layout_width="77dp"
-                android:layout_height="55dp"
+                android:layout_height="65dp"
                 android:layout_marginTop="10dp"
+                android:textAlignment="center"
                 android:textColorHint="@color/black"
                 app:boxCornerRadiusBottomEnd="15dp"
                 app:boxCornerRadiusBottomStart="15dp"
@@ -369,15 +369,15 @@
                     android:id="@+id/secondsEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="#F5F5F5"
                     android:fontFamily="@font/poppins_bold"
                     android:hint="SS"
+                    android:inputType="number"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    app:boxStrokeColor="#000000"
-                    android:backgroundTint="#F5F5F5"
-                    android:inputType="number"
-                    android:textSize="12sp" />
+                    android:textSize="13sp"
+                    app:boxStrokeColor="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

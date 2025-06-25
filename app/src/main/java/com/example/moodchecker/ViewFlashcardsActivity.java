@@ -70,7 +70,6 @@ public class ViewFlashcardsActivity extends AppCompatActivity implements TextToS
         optionOne = findViewById(R.id.optionOne);
         optionTwo = findViewById(R.id.optionTwo);
         optionThree = findViewById(R.id.optionThree);
-        optionFour = findViewById(R.id.optionFour);
         optionsGroup = findViewById(R.id.optionsGroup);
         streakTextView = findViewById(R.id.streakTextView);
         ttsButton = findViewById(R.id.ttsButton);

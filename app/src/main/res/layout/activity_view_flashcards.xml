@@ -62,6 +62,7 @@
                 <RadioButton
                     android:id="@+id/optionOne"
                     android:layout_width="match_parent"
+                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:text="D.I.Y."
                     android:fontFamily="@font/poppins_medium"
@@ -72,6 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Contractor"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="12sp"/>
 
@@ -79,28 +81,26 @@
                     android:id="@+id/optionThree"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Property Manager"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="12sp"/>
 
-                <RadioButton
-                    android:id="@+id/optionFour"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Property Manager"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="12sp"/>
             </RadioGroup>
 
             <!-- Input for Short Text Answer -->
             <EditText
                 android:id="@+id/shortTextInput"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:hint="Enter your answer"
+                android:textColor="#000000"
+                android:textColorHint="#333333"
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@+id/submitButton"
-                app:layout_constraintTop_toBottomOf="@+id/questionText"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/optionsGroup"
+                app:layout_constraintTop_toBottomOf="@+id/questionText" />
 
             <Button
                 android:id="@+id/backButton"
